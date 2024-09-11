@@ -5,86 +5,111 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSS Experiment 1</title>
     <style>
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-.typeset {
-    font-family: Arial, Helvetica, sans-serif;
-    color: red;
-    text-align: center;
-    font-size: 70px
-}
-.typeset2 {
-    background-color: blue;
-    padding: 30px;
-    margin: 20px;
-    border-radius: 5px;
-    color: white;
-    font-family: 'Times New Roman', Times, serif;
-    text-align: center;
-    font-size: 30px;
-}
-.typeset3 {
-    background: linear-gradient(90deg, yellow, blue);
-    font-size: 80px;
-    letter-spacing: 2px;
-    text-shadow: 10px black;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-
-}
-
-*{
+        /* Reset and box-sizing */
+        * {
             margin: 0;
             padding: 0;
-            box-sizing:  border-box;
+            box-sizing: border-box;
+        }
+
+        /* Body and container settings */
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
         }
 
         .container {
             display: flex;
-            gap: 50px;
+            gap: 20px;
             justify-content: space-between;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
         }
+
+        /* Text styles */
+        .typeset {
+            font-family: Arial, Helvetica, sans-serif;
+            color: red;
+            text-align: center;
+            font-size: 70px;
+            margin-bottom: 20px;
+        }
+
+        .typeset2 {
+            background-color: blue;
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 5px;
+            color: white;
+            font-family: 'Times New Roman', Times, serif;
+            text-align: center;
+            font-size: 30px;
+        }
+
+        .typeset3 {
+            background: linear-gradient(90deg, yellow, blue);
+            font-size: 80px;
+            letter-spacing: 2px;
+            text-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Flexbox layout */
         .flex-item {
-            background-color: rgb(20, 20, 45);
+            background-color: #14142d;
             color: white;
             padding: 20px;
-            text-align: center;  
-            flex: 1;        
+            text-align: center;
+            flex: 1;
+            border-radius: 5px;
         }
 
         .flex-item2 {
             background-color: yellow;
             color: blue;
             padding: 20px;
-            text-align: center;  
-            flex: 2;        
+            text-align: center;
+            flex: 2;
+            border-radius: 5px;
         }
-</style>
+
+        /* Image styling */
+        img {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
 </head>
 <body>
-    <div class="typeset"> NOT A FAKE SCAM SITE</div>
-    <div class="typeset2">GET $100000 + Full scholarship </div>
-    <div class="typeset3">Virginia Comonweals Universsity (100% REAL SCHOOL) </div>
-    <div class="typeset2">GET $100000 + Full scholarship </div>
+    <header>
+        <div class="typeset">NOT A FAKE SCAM SITE</div>
+    </header>
 
-    <div class="container">
+    <section>
+        <div class="typeset2">GET $100,000 + Full Scholarship</div>
+        <div class="typeset3">Virginia Commonwealth University (100% REAL SCHOOL)</div>
+        <div class="typeset2">GET $100,000 + Full Scholarship</div>
+    </section>
+
+    <section class="container">
         <div class="flex-item">SSN here</div>
         <div class="flex-item">SSN here</div>
         <div class="flex-item">SSN here</div>
-    </div>
-        
-    <div class="container">
+    </section>
+
+    <section class="container">
         <div class="flex-item">SSN here</div>
         <div class="flex-item2">GET CASH HERE</div>
-        
-      
         <div class="flex-item">SSN here</div>
-    </div>
-    <img src="vcufart.jpg" style="align-content: center;">
+    </section>
+
+    <footer>
+        <img src="vcufart.jpg" alt="Virginia Commonwealth University logo">
+    </footer>
 </body>
 </html>
