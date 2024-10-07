@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Example 03</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: black;
+        overflow: hidden;
+        font-family: Arial, sans-serif;
+      }
+
+      #circleButton {
+        width: 500px;
+        height: 500px;
+        border-radius: 50%;
+        border: none;
+        background-color: white;
+        color: black;
+        font-size: 18px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        cursor: pointer;
+        outline: none;
+        transition: background-color 0.3s, width 0.3s, height 0.3s;
+      }
+
+      #circleButton:hover {
+        background-color: rgb(0, 62, 123);
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="circleButton"></button>
+
+    <script>
+      const clickableButton = document.getElementById("circleButton");
+      const messages = [
+        "Platform Sabotage = BEST class.",
+        "Java script is amazing.",
+        "VCUarts took my money.",
+        "Animated shapes and sentences - WOW!",
+        "Hello, World",
+      ];
+
+      clickableButton.addEventListener("click", () => {
+  const randomWidth = Math.max(150, Math.random() * 500); // Minimum 150px
+  const randomHeight = Math.max(150, Math.random() * 500); // Minimum 150px
+
+  clickableButton.style.width = `${randomWidth}px`;
+  clickableButton.style.height = `${randomHeight}px`;
+
+  const randomIndex = Math.floor(Math.random() * messages.length);
+  clickableButton.textContent = messages[randomIndex];
+
+  // Generate random colors for background and text
+  const randomBackgroundColor = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
+  const randomTextColor = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
+
+  clickableButton.style.backgroundColor = randomBackgroundColor;
+  clickableButton.style.color = randomTextColor;
+});
+
+    </script>
+  </body>
+</html>
