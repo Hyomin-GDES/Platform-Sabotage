@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enhanced JavaScript Mouse Interaction</title>
+    <style>
+      body {
+        height: 100vh;
+        margin: 0;
+        background-color: rgb(255, 150, 150);
+        overflow: hidden;
+      }
+
+      #cursor {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        background: radial-gradient(circle, red, yellow, green);
+        border-radius: 50%;
+        pointer-events: none;
+        transform: translate(-50%, -50%);
+      }
+
+      .trace {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 50%;
+        pointer-events: none;
+        transform: translate(-50%, -50%);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="cursor"></div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.14.0/jquery-ui.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        let currentSpeed = 100;
+        let slowdownInterval = 60 * 1000;
+        let lastSlowdown = Date.now();
+        let angle = 0;
+
+        // Sound effect setup
+        const moveSound = new Audio('https://www.soundjay.com/button/beep-07.wav');
+
+        $(document).mousemove(function (event) {
+          const now = Date.now();
+
+          // Play sound effect
+          moveSound.play();
+
+          // Background color change based on mouse position
+          let red = Math.round((event.pageX / window.innerWidth) * 255);
+          let blue = Math.round((event.pageY / window.innerHeight) * 255);
+          let green = 150;
+          $('body').css('background-color', `rgb(${red}, ${green}, ${blue})`);
+
+          if (now - lastSlowdown > slowdownInterval) {
+            currentSpeed *= 1.25;
+            lastSlowdown = now;
+          }
+
+          // Cursor movement
+          $("#cursor").stop().animate(
+            {
+              left: event.pageX,
+              top: event.pageY,
+            },
+            currentSpeed
+          );
+
+          // Particle effect with swirling motion
+          angle += 700;
+          let radius = 50;
+          let offsetX = Math.cos(angle) * radius;
+          let offsetY = Math.sin(angle) * radius;
+
+          let trace = $('<div class="trace"></div>').appendTo("body");
+
+          trace.css({
+            left: event.pageX + offsetX + "px",
+            top: event.pageY + offsetY + "px",
+            opacity: 1,
+          });
+
+          trace.animate(
+            {
+              opacity: 0,
+            },
+            1000,
+            function () {
+              $(this).remove();
+            }
+          );
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fun Key Press Game</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-color: #f0f0f0;
+            transition: background-color 0.3s;
+        }
+        #message {
+            font-size: 36px;
+            color: #333;
+            text-shadow: 2px 2px #ff6347;
+            transition: color 0.3s, transform 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <div id="message">Press any key to start!</div>
+
+    <audio id="sound" src="https://www.soundjay.com/button/beep-01a.mp3"></audio>
+
+    <script>
+        // Get the message element and sound
+        const messageElement = document.getElementById('message');
+        const soundElement = document.getElementById('sound');
+
+        // Array of random colors
+        const colors = ['#FF6347', '#1E90FF', '#32CD32', '#FFD700', '#FF69B4', '#8A2BE2', '#FF4500'];
+
+        // Add an event listener for key presses
+        document.addEventListener('keydown', (event) => {
+            // Display which key was pressed
+            messageElement.textContent = `You pressed: ${event.key.toUpperCase()} 🎉`;
+
+            // Change text color and add a playful transform
+            messageElement.style.color = colors[Math.floor(Math.random() * colors.length)];
+            messageElement.style.transform = 'scale(1.2)';
+
+            // Play sound
+            soundElement.play();
+
+            // Change background color
+            document.body.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        });
+
+        // Reset message when key is released
+        document.addEventListener('keyup', () => {
+            messageElement.textContent = 'Press any key again!';
+            messageElement.style.transform = 'scale(1)';
+        });
+    </script>
+</body>
+</html>
+
